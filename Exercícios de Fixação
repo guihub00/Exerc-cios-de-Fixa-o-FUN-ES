@@ -46,3 +46,27 @@ FROM produtos;
 d)
 SELECT AVG(preco) AS media_precos
 FROM produtos;
+
+3.
+a)
+CREATE TABLE eventos (
+    data_evento DATE
+);
+
+INSERT INTO eventos (data_evento) VALUES
+('1678-11-01'),
+('2000-01-25'),
+('2018-03-12'),
+('1869-05-15');
+
+b)
+INSERT INTO eventos (data_evento) VALUES (NOW());
+
+c)
+SELECT data_evento, DATEDIFF(NOW(), data_evento) AS diferenca_dias
+FROM eventos;
+
+d)
+SELECT data_evento, DAYNAME(data_evento) AS dia_da_semana
+FROM eventos;
+
