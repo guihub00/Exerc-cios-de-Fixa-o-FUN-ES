@@ -19,4 +19,12 @@ C)
 SELECT nome, LENGTH(nome) AS tamanho
 FROM nomes;
 
+D)
+UPDATE nomes
+SET nome = CONCAT(
+    CASE WHEN nome LIKE 'MARIA%' THEN 'Sra. ' ELSE 'Sr. ' END, nome
+);
+SELECT nome
+FROM nomes;
+
 
