@@ -1,5 +1,6 @@
 Exercícios de Fixação - FUNÇÕES
 
+--------------------------------
 1.
 a) CREATE TABLE nomes (
     nome VARCHAR(100)
@@ -26,7 +27,7 @@ SET nome = CONCAT(
 );
 SELECT nome
 FROM nomes;
-
+--------------------------------
 2.
 a) 
 CREATE TABLE produtos (
@@ -46,7 +47,7 @@ FROM produtos;
 d)
 SELECT AVG(preco) AS media_precos
 FROM produtos;
-
+--------------------------------
 3.
 a)
 CREATE TABLE eventos (
@@ -69,7 +70,7 @@ FROM eventos;
 d)
 SELECT data_evento, DAYNAME(data_evento) AS dia_da_semana
 FROM eventos;
-
+--------------------------------
 4.
 a)
 SELECT produto, preco, quantidade,
@@ -84,7 +85,7 @@ SELECT produto, preco, quantidade,
            ELSE 'Caro'
        END AS categoria_preco
 FROM produtos;
-
+--------------------------------
 5.
 a)
 CREATE FUNCTION TOTAL_VALOR(preco DECIMAL(10, 2), quantidade INT) RETURNS DECIMAL(10, 2)
@@ -97,7 +98,7 @@ END;
 b)
 SELECT produto, preco, quantidade, TOTAL_VALOR(preco, quantidade) AS valor_total
 FROM produtos;
-
+--------------------------------
 6.
 a)
 SELECT COUNT(*) AS total_de_produtos
@@ -116,6 +117,55 @@ WHERE preco = (SELECT MIN(preco) FROM produtos);
 d)
 SELECT SUM(IF(quantidade > 0, preco * quantidade, 0)) AS soma_total_em_estoque
 FROM produtos;
+--------------------------------
+7.
+a)
+CREATE FUNCTION calcular_fatorial(n INT) RETURNS INT
+BEGIN
+    DECLARE resultado INT;
+    SET resultado = 1;
 
+    WHILE n > 1 DO
+        SET resultado = resultado * n;
+        SET n = n - 1;
+    END WHILE;
+
+    RETURN resultado;
+END;
+
+b)
+CREATE FUNCTION calcular_exponencial(base DECIMAL(10, 2), expoente INT) RETURNS DECIMAL(10, 2)
+BEGIN
+    DECLARE resultado DECIMAL(10, 2);
+    SET resultado = 1;
+    
+    IF expoente = 0 THEN
+        RETURN 1; -- Qualquer número elevado a 0 é 1
+    END IF;
+    
+    IF expoente < 0 THEN
+        RETURN NULL; -- Lidar com expoentes negativos
+    END IF;
+    
+    WHILE expoente > 0 DO
+        SET resultado = resultado * base;
+        SET expoente = expoente - 1;
+    END WHILE;
+
+    RETURN resultado;
+END;
+
+c)
+CREATE FUNCTION verificar_palindromo(palavra VARCHAR(255)) RETURNS INT
+BEGIN
+    DECLARE reverso VARCHAR(255);
+    SET reverso = REVERSE(palavra);
+    
+    IF palavra = reverso THEN
+        RETURN 1; -- É um palíndromo
+    ELSE
+        RETURN 0; -- Não é um palíndromo
+    END IF;
+END;
 
 
