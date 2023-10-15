@@ -15,3 +15,8 @@ b)
 UPDATE nomes
 SET nome = UPPER(nome);
 
+C)
+SELECT nome, LENGTH(nome) AS tamanho
+FROM nomes;
+
+
