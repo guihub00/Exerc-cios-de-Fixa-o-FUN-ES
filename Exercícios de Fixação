@@ -1,0 +1,12 @@
+Exercícios de Fixação - FUNÇÕES
+
+1.
+a) CREATE TABLE nomes (
+    nome VARCHAR(100)
+);
+
+INSERT INTO nomes (nome) VALUES
+('Roberta'),
+('Roberto'),
+('Maria Clara'),
+('João');
