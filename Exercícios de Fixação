@@ -27,4 +27,22 @@ SET nome = CONCAT(
 SELECT nome
 FROM nomes;
 
+2.
+a) 
+CREATE TABLE produtos (
+    produto VARCHAR(100),
+    preco DECIMAL(10, 2),
+    quantidade INT
+);
 
+b)
+SELECT produto, ROUND(preco, 2) AS preco_arredon, quantidade
+FROM produtos;
+
+c)
+SELECT produto, ROUND(preco, 2) AS preco_arredondado, ABS(quantidade) AS quant_absoluta
+FROM produtos;
+
+d)
+SELECT AVG(preco) AS media_precos
+FROM produtos;
